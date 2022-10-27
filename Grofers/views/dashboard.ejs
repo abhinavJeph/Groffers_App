@@ -1,0 +1,55 @@
+<h1 class="mt-4">Dashboard</h1>
+<%= console.log(user) %>
+<a type="button" href="/user/logout" class="btn btn-primary btn-lg">Logout</a>
+<button type="button" id="referralBtn" href="/user/referral/?id=<%= user._id %>"class="btn btn-success btn-lg">Referral Code</button>
+
+<button type="button" id="statusBtn"
+href="/user/?status=<%= !user.status %>" class="btn btn-warning btn-lg" style="color: black;">
+<% if(user.status){ %>
+  Withdraw
+<% } else{ %>  
+  Enroll
+<% } %>
+</button>
+
+<a id="historyBtn" href="/user/referral/history/?id=<%= user._id %>" class="btn btn-dark btn-lg text-light">History</a>
+
+<a id="mileStoneBtn" href="/user/referral/milestone/?id=<%= user._id %>" class="btn btn-danger btn-lg text-light">Milestone</a>
+
+<div class="card text-white bg-info mb-3 mt-3">
+  <h4 class="card-header">Welcome <%= user.name %></h4>
+  <div id= "infoCard" class="card-body">
+    <h5>Email: <%= user.email %></h5>
+    <h5 class="card-text">You have <%= user.cash %>$ Cash in your Grofer's account</h5>
+    <h5 id="referralCode" class="card-text" style="display: none"></h5>
+  </div>
+</div>
+
+<div id="container" class="lead mb-3" >
+  <div class="card">
+    <table id = "historyTable" class="table table-hover" style="display: none">
+      <thead class = "table-info">
+        <tr>
+          <th scope="col">Time</th>
+          <th scope="col">Name</th>
+          <th scope="col">Email ID</th>
+          <th scope="col">Incentive</th>
+        </tr>
+      </thead>
+    </table>
+    <table id = "mileStoneTable" class="table table-hover" style="display: none">
+      <thead class = "table-info">
+        <tr>
+          <th scope="col">Serial Number</th>
+          <th scope="col">Goal</th>
+          <th scope="col">Reward</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+<div id="container" class="lead mb-3" >
+
+
+<script src='./js/user.js' type='module'></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</script>
